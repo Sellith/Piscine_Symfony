@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    <label for="firstname">Firstname</label> : <input id="firstname" type="text" name="Firstname" placeholder="Firstname"></input><br>
+    <label for="name">Name</label> : <input id="name" type="text" name="Name" placeholder="Name"><br>
+    <label for="age">Age</label> : <input id="age" type="number" name="Name" placeholder="Age"><br>
+    <label for="phone">Phone number</label> : <input id="phone" type="tel" name="Name" placeholder="Phone number"><br>
+    <label for="email">Email</label> : <input id="email" type="email" name="Name" placeholder="Email"><br>
+    <label for="student">Student at 42 ?</label> : <input id="student" type="checkbox" name="Name"><br>
+    <label>Gender</label> :
+    <div>
+      <input type="radio" name="gender" id="gender_male" value="Male">
+      <label for="Male">Male</label>
+    </div>
+    <div>
+      <input type="radio" name="gender" id="gender_female"  value="Female">
+      <label for="Male">Female</label>
+    </div>
+    <div>
+      <input type="radio" name="gender" id="gender_other" value="Other">
+      <label for="Male">Other</label>
+    </div>
+    <button type="button" onclick="displayFormContents()">Send informations</button>
+  </form>
+  <script src="./popup.js"></script>
+</body>
+</html>
