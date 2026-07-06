@@ -7,45 +7,70 @@
 </head>
 <body>
   <form>
+
     <div>
-      <label for="firstname">Firstname</label> : 
-      <input id="firstname" type="text" name="Firstname" placeholder="Ex: Aragorn">
+      <label for="firstname">Firstname: 
+        <input id="firstname" type="text" name="Firstname" placeholder="Ex: Aragorn">
+      </label>
     </div>
+
     <div>
-      <label for="name">Name</label> : 
-      <input id="name" type="text" name="Name" placeholder="Ex: Telcontar">
+      <label for="name">Name : 
+        <input id="name" type="text" name="Name" placeholder="Ex: Telcontar">
+      </label>
     </div>
+
     <div>
-      <label for="age">Age</label> : 
-      <input id="age" type="number" name="Age" placeholder="Ex: 87">
+      <label for="age">Age : 
+        <input id="age" type="number" name="Age" placeholder="Ex: 87">
+      </label>
     </div>
+
     <div>
-      <label for="phone">Phone number</label> : 
-      <input id="phone" type="tel" name="Phone" placeholder="Ex: 07973137">
+      <label for="phone">Phone number : 
+        <input id="phone" type="tel" name="Phone" placeholder="Ex: 07973137">
+      </label>
     </div>
+
     <div>
-      <label for="email">Email</label> : 
-      <input id="email" type="email" name="Email" placeholder="Ex: aragorn@gondor.com">
+      <label for="email">Email : 
+        <input id="email" type="email" name="Email" placeholder="Ex: aragorn@gondor.com">
+      </label>
     </div>
+
     <div>
-      <label for="student">Student at 42 ?</label> : 
-      <input id="student" type="checkbox" name="Student">
+      <label for="student">Student at 42 ?
+        <input id="student" type="checkbox" name="Student">
+      </label>
     </div>
+
     <fieldset>
+      
       <legend>Gender</legend>
+
       <div>
-        <input type="radio" name="gender" id="gender_male" value="Male" checked>
-        <label for="gender_male">Male</label>
+        <label for="gender_male">
+          <input type="radio" name="gender" id="gender_male" value="Male" checked>
+           Male
+        </label>
       </div>
+
       <div>
-        <input type="radio" name="gender" id="gender_female"  value="Female">
-        <label for="gender_female">Female</label>
+        <label for="gender_female">
+          <input type="radio" name="gender" id="gender_female"  value="Female">
+           Female
+        </label>
       </div>
+
       <div>
-        <input type="radio" name="gender" id="gender_other" value="Other">
-        <label for="gender_other">Other</label>
+        <label for="gender_other">
+          <input type="radio" name="gender" id="gender_other" value="Other">
+           Other
+          </label>
       </div>
+
     </fieldset>
+    
     <button type="button" onclick="displayFormContents()">Send informations</button>
   </form>
   <script src="./popup.js"></script>
