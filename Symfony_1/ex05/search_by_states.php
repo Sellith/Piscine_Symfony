@@ -21,7 +21,7 @@ function search_by_states(string $states) {
         $capital    = $CAPITALS[$abbr] ?? null;
         if ($capital)
             echo "$capital is the capital of $state\n";
-        else if (array_search($state, $CAPITALS, false))
+        else if (array_search($state, $CAPITALS, true))
             echo "$state is a capital\n";
         else
             echo "$state  is neither a capital nor a state.\n";
