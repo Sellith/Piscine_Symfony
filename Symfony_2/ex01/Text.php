@@ -8,11 +8,11 @@ class Text {
     public function readData():array {
         $formatedData = [];
         foreach($this->data as $strs) {
-            array_push($formatedData, "<p>" . $strs . "</p>\n");
+            $formatedData[] = "<p>" . $strs . "</p>\n";
         }
         return $formatedData;
     }
     public function append(string $str) {
-        array_push($this->data, $str);
+        $this->data[] = $str;
     }
 }
