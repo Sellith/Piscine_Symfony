@@ -9,5 +9,3 @@ function array2hash(array $arrays):array {
     }
     return $hash;
 }
-
-?>

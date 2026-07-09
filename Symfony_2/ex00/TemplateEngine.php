@@ -20,5 +20,3 @@ class TemplateEngine {
             throw new Exception("Error: couldn't put data in $filename");
     }
 }
-
-?>

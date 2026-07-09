@@ -18,4 +18,3 @@ function capital_city_from(string $state):string {
     $abbr   = $STATES[$state] ?? null;
     return $CAPITALS[$abbr] ?? 'Unknown';
 }
-?>

@@ -6,4 +6,3 @@ fclose(($file));
 foreach($strings as $str) {
     echo $str . "\n";
 }
-?>

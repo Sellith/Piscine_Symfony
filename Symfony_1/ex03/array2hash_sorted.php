@@ -9,4 +9,3 @@ function array2hash(array $arrays):array {
     krsort($hash);
     return $hash;
 }
-?>

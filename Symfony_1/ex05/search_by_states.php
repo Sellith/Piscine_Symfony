@@ -27,4 +27,3 @@ function search_by_states(string $states) {
             echo "$state  is neither a capital nor a state.\n";
     }
 }
-?>
