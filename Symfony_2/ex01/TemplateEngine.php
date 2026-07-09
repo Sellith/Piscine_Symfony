@@ -1,10 +1,7 @@
 <?php
-include("./Text.php");
-
 class TemplateEngine {
     
-    public function createFile(string $filename, array $text) {
-        $text       = new Text($text);
+    public function createFile(string $filename, object $text) {
         $newHtml    = "<html><body>\n" 
             . implode($text->readData()) 
             . "</body></html>";
