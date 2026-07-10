@@ -9,12 +9,19 @@ class Elem {
     ];
     private const TEXT_ELEM = [
         "title",
+        "span",
         "h1",
         "h2",
         "h3",
         "h4",
         "h5",
         "h6",
+        "p",
+        "b"
+    ];
+
+    private const SPECIAL_CASE = [
+        "span",
         "p"
     ];
 
@@ -31,6 +38,9 @@ class Elem {
     private function isTextElement(?string $element = null): bool {
         return in_array($element ?? $this->getMainElement(), self::TEXT_ELEM, true);
     }
+    private function isSpecialCase(?string $element = null): bool {
+        return in_array($element ?? $this->getMainElement(), self::SPECIAL_CASE, true);
+    }
 
 
     private function indent(string $html): string {
@@ -40,19 +50,26 @@ class Elem {
     }
 
     public function __construct(string $element, string|array|null $content = null) {
-        $isVoid         = $this->isVoidElement($element); 
+        $renderedContent = is_array($content) ? implode($content) : $content;
+        if ($element === '') {
+            $this->HTML = $renderedContent;
+            return ;
+        }
+
+        $isVoid         = $this->isVoidElement($element);
         $this->HTML     = "<" . $element;
-        $this->HTML    .= $isVoid ? " " : (">" . PHP_EOL);
+        $this->HTML    .= $isVoid ? ($content === null ? "" : " ") : ">";
 
         if ($content !== null) {
-            $renderedContent = is_array($content) ? implode($content) : $content;
-            if ($isVoid) {
+            if ($isVoid || $this->isTextElement()) {
                 $this->HTML .= $renderedContent;
             } else {
-                $this->HTML .= $this->indent($renderedContent) ;
+                $this->HTML .= PHP_EOL . $this->indent($renderedContent);
             }
         }
-        
+        elseif (!$isVoid && !$this->isTextElement())
+            $this->HTML .= PHP_EOL;
+
         $this->HTML   .= $isVoid ? "" : "</" . $element;
         $this->HTML   .= ">" . PHP_EOL;
     }
@@ -61,12 +78,15 @@ class Elem {
         
         if ($this->isVoidElement())
             throw new Exception("Error: Void elements can't be parents");
-        else if ($this->isTextElement())
+        elseif ($this->isTextElement() && !$this->isSpecialCase())
             throw new Exception("Error: Text elements can't be parents");
 
         $lastClosingPos = strrpos($this->HTML, "<");
         
-        $buff   = $this->indent($element->HTML);
+        if (!$this->isSpecialCase())
+            $buff   = $this->indent($element->HTML);
+        else
+            $buff   = explode(PHP_EOL, rtrim($element->HTML));
         $this->HTML = substr_replace($this->HTML, $buff, $lastClosingPos, 0);
     }
 
