@@ -8,6 +8,10 @@ $teaPot     = new Tea();
 $coffeeCup  = new Coffee();
 $CocoaMilk  = new HotBeverage("CocoaMilk", 3.4012, 42.42);
 $template   = new TemplateEngine();
-$template->createFile($teaPot);
-$template->createFile($coffeeCup);
-$template->createFile($CocoaMilk);
+try {
+    $template->createFile($teaPot);
+    $template->createFile($coffeeCup);
+    $template->createFile($CocoaMilk);
+} catch (Exception $e) {
+    die($e->getMessage());
+}
