@@ -1,5 +1,7 @@
 <?php
 include("./Elem.php");
+include("./TemplateEngine.php");
+
 $html       = new Elem("html");
 $head       = new Elem("head");
 $charset    = new Elem("meta", "charset=\"UTF-8\"");
@@ -28,7 +30,7 @@ $infos      = [
 ];
 
 $paraf      = new Elem("p", $infos);
-
+$img        = new Elem("img", "src=https://bit.ly/4f4cAK3");
 
 try {
     
@@ -45,9 +47,12 @@ try {
     $p->pushElement($text2);
     $body->pushElement($p);
     $div->pushElement($paraf);
+    $div->pushElement($img);
     $body->pushElement($div);
     $html->pushElement($body);
-    echo $html->getHTML();
+
+    $Template   = new TemplateEngine($html);
+    $Template->createFile("index.html");
 
 
 } catch (Exception $e) {
