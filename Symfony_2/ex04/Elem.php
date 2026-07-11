@@ -17,20 +17,16 @@ class Elem {
     ];
 
     private string $HTML;
-
-    private function getMainElement(?self $elem = null): string {
-        preg_match('/^<(\w+)/', $elem ? $elem->HTML : $this->HTML, $element);
-        return $element[1];
-    }
+    private string $element;
 
     private function isValidElement(string $element): bool {
         return  $element === null
                     ? false 
-                    : in_array($element ?? $this->getMainElement(), self::VALID_ELEM, true);
+                    : in_array($element ?? $this->element, self::VALID_ELEM, true);
     }
 
     private function elementChecker(array $valid, ?string $element = null): bool {
-        return in_array($element ?? $this->getMainElement(), $valid, true);
+        return in_array($element ?? $this->element, $valid, true);
     }
 
     private function indent(string $html): string {
@@ -74,6 +70,7 @@ class Elem {
         if (!$this->isValidElement($element))
             throw new MyException("Error: Non valid element: $element\n");
         
+        $this->element  = $element;
         $isVoid         = $this->elementChecker(self::VOID_ELEM, $element);
 
         $this->createOpeningElem($element, $attributes, $isVoid);
@@ -85,7 +82,7 @@ class Elem {
     }
 
 
-    public function pushElement(self $element): void {
+    public function pushElement(self $data): void {
         
         if ($this->elementChecker(self::VOID_ELEM))
             throw new MyException("Error: Void elements can't be parents\n");
@@ -93,8 +90,8 @@ class Elem {
         elseif ($this->elementChecker(self::TEXT_ELEM))
             throw new MyException("Error: Text elements can't be parents\n");
         
-        $thisMainElem   = $this->getMainElement();
-        $elemMainElem   = $this->getMainElement($element);
+        $thisMainElem   = $this->element;
+        $elemMainElem   = $data->element;
 
         if (isset(self::VALID_CHILDRENS[$thisMainElem]))
             if (!$this->elementChecker(self::VALID_CHILDRENS[$thisMainElem], $elemMainElem))
@@ -104,7 +101,7 @@ class Elem {
         $lastClosingPos = strrpos($this->HTML, "<");
         $buff   = $openingEndPos === $lastClosingPos ? PHP_EOL : "";
 
-        $buff  .= $this->indent($element->HTML);;
+        $buff  .= $this->indent($data->HTML);;
         $this->HTML = substr_replace($this->HTML, $buff, $lastClosingPos, 0);
     }
 

@@ -7,8 +7,8 @@ try {
 
     $html       = new Elem("html");
     $head       = new Elem("head");
-    $charset    = new Elem("meta", "charset=\"UTF-8\"");
-    $viewport   = new Elem("meta", "name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"");
+    $charset    = new Elem("meta", null, ["charset" => "UTF-8"]);
+    $viewport   = new Elem("meta", null, ["name" => "viewport", "content" => "width=device-width, initial-scale=1.0"]);
     $title      = new Elem("title", "My Little Poney");
 
     $body       = new Elem("body");
