@@ -101,7 +101,7 @@ class Elem {
         $lastClosingPos = strrpos($this->HTML, "<");
         $buff   = $openingEndPos === $lastClosingPos ? PHP_EOL : "";
 
-        $buff  .= $this->indent($data->HTML);;
+        $buff  .= $this->indent($data->HTML);
         $this->HTML = substr_replace($this->HTML, $buff, $lastClosingPos, 0);
     }
 
