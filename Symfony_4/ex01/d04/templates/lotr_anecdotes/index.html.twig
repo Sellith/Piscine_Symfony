@@ -11,15 +11,11 @@
 <div class="example-wrapper">
     <h2>Summary :</h2>
     <ul>
+      {% for category in categories %}
       <li>
-        <a href="/e01/broken-toe">broken toe</a>
+        <a href="{{ path('app_lotr_anecdotes-' ~ category) }}">{{ category|replace({"-": " "})|capitalize }}</a>
       </li>
-      <li>
-        <a href="/e01/text-not-known">404 text not known</a>
-      </li>
-      <li>
-        <a href="/e01/height-difference">Height difference</a>
-      </li>
+      {% endfor %}
     </ul>
 </div>
 {% endblock %}

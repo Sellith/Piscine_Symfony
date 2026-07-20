@@ -9,11 +9,18 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class LotrAnecdotesController extends AbstractController
 {
+    private const CATEGORIES = [
+        'broken-toe',
+        'text-not-known',
+        'height-difference',
+    ];
 
     #[Route('/e01', name: 'app_lotr_anecdotes-summary')]
     public function index(): Response
     {
-        return $this->render('lotr_anecdotes/index.html.twig');
+        return $this->render('lotr_anecdotes/index.html.twig', [
+            'categories' => self::CATEGORIES
+        ]);
     }
 
     #[Route('/e01/broken-toe', name: 'app_lotr_anecdotes-broken-toe')]
@@ -34,8 +41,8 @@ final class LotrAnecdotesController extends AbstractController
         return $this->render('lotr_anecdotes/heightDifference.html.twig');
     }
     
-    #[Route('/e01/{path}', name: 'app_lotr_anecdotes_catch_all')]
-    public function summary(): RedirectResponse
+    #[Route('/e01/{path}', name: 'app_lotr_anecdotes-catch-all')]
+    public function catchAll(): RedirectResponse
     {
         return $this->redirectToRoute('app_lotr_anecdotes-summary');
     }
