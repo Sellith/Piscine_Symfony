@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Summary{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h2>Summary :</h2>
+    <ul>
+      <li>
+        <a href="/e01/broken-toe">broken toe</a>
+      </li>
+      <li>
+        <a href="/e01/text-not-known">404 text not known</a>
+      </li>
+      <li>
+        <a href="/e01/height-difference">Height difference</a>
+      </li>
+    </ul>
+</div>
+{% endblock %}
